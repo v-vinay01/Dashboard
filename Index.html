@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Explore Page</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        background-color: black;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        font-family: Arial, sans-serif;
+        color: white;
+    }
+
+    button {
+        padding: 15px 30px;
+        font-size: 18px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    #exploreBtn {
+        background-color: red;
+        color: white;
+    }
+
+    #startBtn {
+        background-color: red;
+        color: white;
+        display: none;
+        margin-top: 20px;
+    }
+
+    button:hover {
+        background-color: darkred;
+        transform: scale(1.05);
+    }
+
+    video {
+        display: none;
+        max-width: 80%;
+        border-radius: 10px;
+    }
+</style>
+</head>
+
+<body>
+
+<button id="exploreBtn">Explore</button>
+
+<video id="videoPlayer" controls>
+    <source src="Net.mp4" type="video/mp4">
+    Your browser does not support video.
+</video>
+
+<button id="startBtn">Start Exploring</button>
+
+<script>
+    const exploreBtn = document.getElementById("exploreBtn");
+    const video = document.getElementById("videoPlayer");
+    const startBtn = document.getElementById("startBtn");
+
+    exploreBtn.onclick = () => {
+        exploreBtn.style.display = "none"; // hide first button
+        video.style.display = "block";     // show video
+        video.play();
+    };
+
+    video.onended = () => {
+        startBtn.style.display = "block";  // show next button
+    };
+
+    startBtn.onclick = () => {
+        alert("Now you can start exploring!");
+        // You can replace this with navigation:
+        // window.location.href = "nextpage.html";
+    };
+</script>
+
+</body>
+</html>
